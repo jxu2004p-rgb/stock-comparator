@@ -4,7 +4,7 @@ const path = require('path');
 const { normalizeSymbol, requestMarketData } = require('./lib/market-data');
 
 const PORT = Number(process.env.PORT) || 4173;
-const ROOT = __dirname;
+const ROOT = path.join(__dirname, 'public');
 const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml' };
 
 function send(res, status, body, type = 'application/json; charset=utf-8') {

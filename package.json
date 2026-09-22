@@ -4,8 +4,8 @@
   "private": true,
   "description": "Compare historical percentage returns for two stocks or ETFs.",
   "scripts": {
-    "start": "node server.js",
-    "check": "node --check app.js && node --check server.js && node --check api/finance/[symbol].js && node --check lib/market-data.js"
+    "dev": "node dev-server.js",
+    "check": "node --check public/app.js && node --check dev-server.js && node --check api/finance/[symbol].js && node --check lib/market-data.js"
   },
   "engines": {
     "node": ">=20"

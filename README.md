@@ -5,7 +5,7 @@ A focused stock and ETF return comparison tool. It defaults to AVGO vs. VOO and 
 ## Run locally
 
 ```powershell
-npm start
+npm run dev
 ```
 
 Then open <http://127.0.0.1:4173>.
@@ -21,4 +21,4 @@ The repository is ready for Vercel's zero-configuration Git deployment:
 3. Leave the build and output-directory fields empty.
 4. Deploy—no environment variables are required.
 
-Static assets are served from the repository root. `/api/finance/[symbol]` runs as a Node.js serverless function and caches successful market-data responses at the edge for five minutes.
+Static assets are served from `public/`. `/api/finance/[symbol]` runs as a Node.js serverless function and caches successful market-data responses at the edge for five minutes. The local-only development server is excluded from Vercel deployments so Vercel cannot mistake it for the production entry point.

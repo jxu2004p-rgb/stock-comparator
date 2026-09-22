@@ -1,4 +1,4 @@
 .git
 .agents
 .codex
-server.js
+dev-server.js
