@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { normalizeSymbol, requestMarketData } = require('./lib/market-data');
 
 const PORT = Number(process.env.PORT) || 4173;
 const ROOT = __dirname;
@@ -15,13 +16,11 @@ const server = http.createServer(async (req, res) => {
   const requestUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
   if (requestUrl.pathname.startsWith('/api/finance/')) {
-    const symbol = decodeURIComponent(requestUrl.pathname.slice('/api/finance/'.length)).toUpperCase();
-    if (!/^[A-Z0-9.\-^]{1,12}$/.test(symbol)) return send(res, 400, JSON.stringify({ error: 'Invalid symbol' }));
+    const symbol = normalizeSymbol(decodeURIComponent(requestUrl.pathname.slice('/api/finance/'.length)));
+    if (!symbol) return send(res, 400, JSON.stringify({ error: 'Invalid symbol' }));
     try {
-      const endpoint = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=10y&interval=1d&events=history&includeAdjustedClose=true`;
-      const upstream = await fetch(endpoint, { headers: { 'User-Agent': 'Mozilla/5.0 Pairwise/1.0', Accept: 'application/json' } });
-      const body = await upstream.text();
-      return send(res, upstream.status, body);
+      const marketData = await requestMarketData(symbol);
+      return send(res, marketData.status, marketData.body);
     } catch (error) {
       return send(res, 502, JSON.stringify({ error: 'Market data is temporarily unavailable' }));
     }
