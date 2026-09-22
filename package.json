@@ -1,0 +1,9 @@
+{
+  "name": "pairwise-stock-comparator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Compare historical percentage returns for two stocks or ETFs.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
