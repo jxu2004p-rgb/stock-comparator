@@ -122,3 +122,33 @@ footer { height: 64px; }
   .methodology { padding: 52px 6vw; }
   footer { height: 84px; gap: 10px; }
 }
+
+/* Readability: larger type without adding whitespace */
+.brand { font-size: 15px; }
+nav a { font-size: 13px; }
+.language-switch { font-size: 10px; }
+.market-status { font-size: 11px; }
+.eyebrow { font-size: 12px; }
+.hero-copy { font-size: 16px; }
+.symbol-form label > span { font-size: 11px; }
+.input-shell b { font-size: 12px; }
+.versus { font-size: 12px; }
+.symbol-form > button { font-size: 14px; }
+.quick-pairs > span { font-size: 10px; }
+.quick-pairs button { font-size: 11px; }
+.as-of { font-size: 11px; }
+.period-tabs button { font-size: 12px; }
+.ticker b { font-size: 16px; }
+.ticker small { font-size: 11px; }
+.card-footer span { font-size: 10px; }
+.card-footer b { font-size: 12px; }
+.winner-label { font-size: 10px; }
+.winner-card p { font-size: 12px; }
+.chart-header h3 { font-size: 17px; }
+.chart-header p { font-size: 12px; }
+.legend { font-size: 11px; }
+.loading { font-size: 12px; }
+.chart-tooltip { font-size: 11px; }
+.data-note { font-size: 11px; line-height: 1.5; }
+.method-grid p { font-size: 14px; }
+footer { font-size: 11px; }
