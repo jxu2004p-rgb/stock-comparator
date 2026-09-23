@@ -2,7 +2,7 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 
 const PERIOD_DAYS = { '1mo': 31, '3mo': 93, '6mo': 186, '1y': 366, '3y': 1096, '5y': 1827, max: Infinity };
-const FALLBACK_NAMES = { AVGO: 'Broadcom Inc.', VOO: 'Vanguard S&P 500 ETF', NVDA: 'NVIDIA Corporation', QQQ: 'Invesco QQQ Trust', AAPL: 'Apple Inc.', SPY: 'SPDR S&P 500 ETF', MSFT: 'Microsoft Corporation' };
+const FALLBACK_NAMES = { AVGO: 'Broadcom Inc.', VOO: 'Vanguard S&P 500 ETF', NVDA: 'NVIDIA Corporation', AAPL: 'Apple Inc.', SPY: 'SPDR S&P 500 ETF', MSFT: 'Microsoft Corporation', GOOGL: 'Alphabet Inc.', INTC: 'Intel Corporation', AMD: 'Advanced Micro Devices, Inc.' };
 const state = { period: '1y', a: null, b: null, language: 'en' };
 const TRANSLATIONS = {
   en: {
@@ -31,7 +31,7 @@ function seededHistory(symbol) {
   let seed = [...symbol].reduce((n, c) => n + c.charCodeAt(0), 17);
   const points = [];
   const end = new Date();
-  const profile = { AVGO: [4.7, .032], VOO: [1.7, .013], NVDA: [6.5, .05], QQQ: [2.1, .018], AAPL: [2.6, .022], SPY: [1.65, .013], MSFT: [2.4, .019] }[symbol] || [1.45, .024];
+  const profile = { AVGO: [4.7, .032], VOO: [1.7, .013], NVDA: [6.5, .05], AAPL: [2.6, .022], SPY: [1.65, .013], MSFT: [2.4, .019], GOOGL: [2.2, .021], INTC: [.82, .027], AMD: [3.1, .034] }[symbol] || [1.45, .024];
   let price = 100;
   for (let i = 0; i < 1305; i++) {
     seed = (seed * 9301 + 49297) % 233280;
